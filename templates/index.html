@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card Generator - Premium Studio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Background abstract shapes -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-id-card logo-icon"></i>
+                <span class="logo-text">CardCraft</span>
+            </div>
+            <p class="subtitle">Create and curate professional digital identity cards instantly.</p>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="workspace">
+            <!-- Form Panel -->
+            <section class="form-panel">
+                <h2 class="section-title"><i class="fa-solid fa-sliders"></i> Profile Configuration</h2>
+                
+                <form id="profile-form">
+                    <div class="form-group">
+                        <label for="input-name">Full Name</label>
+                        <input type="text" id="input-name" placeholder="e.g. Rohith Sharma" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-title">Job Title</label>
+                        <input type="text" id="input-title" placeholder="e.g. Lead Frontend Architect" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-bio">Short Bio</label>
+                        <textarea id="input-bio" placeholder="Tell a compelling story in 2-3 sentences..." rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-avatar">Avatar Image URL</label>
+                        <input type="url" id="input-avatar" placeholder="e.g. https://images.unsplash.com/photo-...">
+                        <span class="input-helper">Leave empty for a beautiful custom letter avatar</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-skills">Skills (comma-separated)</label>
+                        <input type="text" id="input-skills" placeholder="e.g. React, Python, UI/UX, GraphQL">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select Card Theme</label>
+                        <div class="theme-picker">
+                            <label class="theme-option">
+                                <input type="radio" name="theme-radio" value="glass" checked>
+                                <span class="theme-card glass-preview">
+                                    <span class="theme-name">Glassmorphism</span>
+                                </span>
+                            </label>
+                            <label class="theme-option">
+                                <input type="radio" name="theme-radio" value="dark-neon">
+                                <span class="theme-card dark-neon-preview">
+                                    <span class="theme-name">Dark Neon</span>
+                                </span>
+                            </label>
+                            <label class="theme-option">
+                                <input type="radio" name="theme-radio" value="royal-gold">
+                                <span class="theme-card royal-gold-preview">
+                                    <span class="theme-name">Royal Gold</span>
+                                </span>
+                            </label>
+                            <label class="theme-option">
+                                <input type="radio" name="theme-radio" value="ocean-breeze">
+                                <span class="theme-card ocean-breeze-preview">
+                                    <span class="theme-name">Ocean Breeze</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Save to Studio History
+                    </button>
+                </form>
+            </section>
+
+            <!-- Preview Panel -->
+            <section class="preview-panel">
+                <h2 class="section-title"><i class="fa-regular fa-eye"></i> Live Identity Preview</h2>
+                
+                <div class="preview-container">
+                    <!-- Dynamic Profile Card -->
+                    <div class="profile-card theme-glass" id="live-card">
+                        <div class="card-inner">
+                            <div class="avatar-container">
+                                <img src="" id="card-avatar" alt="Avatar" class="hidden">
+                                <div id="card-avatar-fallback" class="avatar-fallback">RS</div>
+                            </div>
+                            
+                            <div class="profile-info">
+                                <h3 id="card-name" class="profile-name">Your Name</h3>
+                                <p id="card-title" class="profile-role">Professional Title</p>
+                                <p id="card-bio" class="profile-bio">Your story will appear here. Start typing in the form to see your card update live in real-time!</p>
+                            </div>
+                            
+                            <div class="skills-container" id="card-skills">
+                                <span class="skill-badge">HTML5</span>
+                                <span class="skill-badge">CSS3</span>
+                                <span class="skill-badge">JavaScript</span>
+                            </div>
+                            
+                            <div class="card-footer">
+                                <span class="brand-tag">
+                                    <i class="fa-solid fa-shield-halved"></i> Verified Identity
+                                </span>
+                                <div class="social-links">
+                                    <a href="#" onclick="event.preventDefault();"><i class="fa-brands fa-github"></i></a>
+                                    <a href="#" onclick="event.preventDefault();"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="#" onclick="event.preventDefault();"><i class="fa-brands fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- History Section -->
+        <section class="history-section">
+            <h2 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Generated Cards Registry</h2>
+            <div class="history-grid" id="history-grid">
+                <!-- Loaded via JS -->
+                <div class="loading-history">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Loading registry logs...
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="/static/app.js"></script>
+</body>
+</html>
